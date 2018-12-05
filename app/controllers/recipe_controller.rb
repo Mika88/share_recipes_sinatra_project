@@ -1,6 +1,15 @@
 class RecipeController < ApplicationController
   get '/recipes' do
     @recipes = Recipe.all
-    erb :'/recipes/index'
+    if logged_in?
+      erb :'/recipes/index'
+    else
+      redirect_to_login
+    end
   end
+  
+  get '/recipes/new' do
+    
+  end
+  
 end
