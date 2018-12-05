@@ -1,6 +1,6 @@
 class RecipeController < ApplicationController
   get '/recipes' do
     @recipes = Recipe.all
-    erb :index
+    erb :'/recipes/index'
   end
 end
