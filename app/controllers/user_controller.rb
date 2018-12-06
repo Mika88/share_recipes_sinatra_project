@@ -17,18 +17,18 @@ class UserController < ApplicationController
   end
 
   get '/login' do
-    if !logged_in?
-      erb :'/users/login'
+    if logged_in?
+      redirect "/recipes"
     else
-      redirect "/tweets"
+      erb :'/users/login'
     end
   end
 
   post '/login' do
-		@user = User.find_by(:username => params[:username])
+		@user = User.find_by(:name => params[:name])
 	  if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-	    redirect "/tweets"
+	    redirect "/recipes"
 	  else
 	    redirect "/login"
 	  end
