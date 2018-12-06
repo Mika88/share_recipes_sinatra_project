@@ -9,7 +9,7 @@ class RecipeController < ApplicationController
   end
   
   get '/recipes/new' do
-    
+    erb :'/recipes/new'
   end
   
 end
