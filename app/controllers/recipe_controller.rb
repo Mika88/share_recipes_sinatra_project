@@ -9,7 +9,24 @@ class RecipeController < ApplicationController
   end
   
   get '/recipes/new' do
-    erb :'/recipes/new'
+    if logged_in?
+      erb :'/recipes/new'
+    else
+      redirect_to_login
+    end
   end
   
+  post '/recipes' do
+    if !params[:name].empty? && !params[:ingredients].empty? && !params[:instructions].empty?
+      @recipe = Recipe.create(name: params[:name], ingredients: params[:ingredients], instructions: params[:instructions])
+    else
+      redirect "/recipes/new"
+    end
+
+    if logged_in?
+      @recipe.user_id = current_user.id
+      @recipe.save
+    end
+    redirect "/recipes"
+  end
 end
