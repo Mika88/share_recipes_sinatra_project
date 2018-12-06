@@ -2,7 +2,7 @@ class RecipeController < ApplicationController
   get '/recipes' do
     @recipes = Recipe.all
     if logged_in?
-      erb :'/recipes'
+      erb :'/recipes/index'
     else
       redirect "/login"
     end
