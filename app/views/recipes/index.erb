@@ -1,7 +1,7 @@
 <h1>Recipes:</h1>
 
 <%@recipes.each_with_index do |recipe, index|%>
-  <%=index + 1%>. <%=recipe.name%><br>
-  <a href="/recipes/<%=recipe.id%>">Recipe Page</a>
+ <%=index + 1%>. <a href="/recipes/<%=recipe.id%>"><%=recipe.name%><br></a>
+ Created by: <%=recipe.user.name%>
   <br></br>
 <%end%>
