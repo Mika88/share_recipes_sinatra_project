@@ -2,6 +2,6 @@
 
 <%@recipes.each do |recipe|%>
  <%=recipe.id%>. <a href="/recipes/<%=recipe.id%>"><%=recipe.name%><br></a>
- Added by: <%=recipe.user.name%>
+ Added by: <%=recipe.user.username%>
   <br></br>
 <%end%>
