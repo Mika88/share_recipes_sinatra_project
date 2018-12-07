@@ -41,6 +41,10 @@ class UserController < ApplicationController
 	
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
-    erb :'/users/show'
+    if  session[:user_id] == @user.id
+      erb :'/users/show'
+    else
+      redirect "/recipes"
+    end
   end
 end
