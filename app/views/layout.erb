@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Share-Recipes-app</title>
+  </head>
+  <body>
+    <nav>
+      <% if logged_in? %>
+        <a href="/users/<%=current_user.slug%>"> My Page </a> 
+        <a href="/logout">  Log Out </a>
+        <p>Welcome, <%=current_user.name %></p>
+
+      <% else %>
+        <a href="/signup">Signup</a>
+        <a href="/login"> Login </a>
+      <%end %>
+
+    </nav>
+    <div class="container">
+
+        <%=yield%>
+
+     
+    </div>
+
+  </body>
+</html>
