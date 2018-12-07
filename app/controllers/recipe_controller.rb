@@ -39,5 +39,19 @@ class RecipeController < ApplicationController
       redirect "/login"
     end
   end
-
+  
+  get '/recipes/:id/edit' do
+    if logged_in?
+      @recipe = Recipe.find(params[:id])
+      if @recipe.user_id == current_user.id
+         erb :'/recipes/edit'
+      else
+        redirect "/recipes"
+      end
+    else
+      redirect "/login"
+    end
+  end
+  
+  
 end

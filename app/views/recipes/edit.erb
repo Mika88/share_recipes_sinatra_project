@@ -1,0 +1,17 @@
+<h1>Edit Recipe: <%=@recipe.name%></h1>
+<input id="hidden" type="hidden" name="_method" value="patch">
+<label>Recipe Name: </label>
+  <input type="text" name="name">
+  
+  <br></br>
+  <label>Recipe Ingredients and Quantities: </label><br>
+  <textarea rows = "5" cols = "50" name = "ingredients"></textarea>
+  
+  <br></br>
+  <label>Instructions: </label><br>
+  <textarea rows = "5" cols = "50" name = "instructions"></textarea>
+  
+  <br></br>
+  <input type="submit" value="Edit Recipe">
+</form>
+
