@@ -31,5 +31,13 @@ class RecipeController < ApplicationController
     redirect "/recipes"
   end
   
-  
+    get '/recipes/:id' do
+    @recipe = Recipe.find(params[:id])
+    if logged_in?
+      erb :'/recipes/show'
+    else
+      redirect "/login"
+    end
+  end
+
 end
