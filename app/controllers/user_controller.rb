@@ -5,9 +5,9 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.new(name: params["name"], email: params["email"], password: params["password"])
+    @user = User.new(params)
 
-    if @user.save && !@user.name.empty? && !@user.email.empty?
+    if @user.save && @user.name != "" && @user.email != ""
       @user.save
       session[:user_id] = @user.id
       redirect "/recipes"

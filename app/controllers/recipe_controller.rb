@@ -17,7 +17,7 @@ class RecipeController < ApplicationController
   end
   
   post '/recipes' do
-    if !params[:name].empty? && !params[:ingredients].empty? && !params[:instructions].empty?
+    if params[:name] != "" && params[:ingredients] != "" && params[:instructions] != ""
       @recipe = Recipe.create(params)
     else
       redirect "/recipes/new"
