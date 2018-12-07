@@ -1,23 +1,23 @@
 
-<h1>Edit Recipe: <%=@recipe.name%></h1>
+<h1>Edit Recipe:</h1>
 
 <form method="POST" action="/recipes/<%=@recipe.id%>">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label>Recipe Name: </label>
-  <input type="text" name="name">
+  <input type="text" name="name" value="<%=@recipe.name%>">
     
     <br></br>
     
    <h3>Ingredients and Quantities:</h3>
-   <p><%=@recipe.ingredients%></p>
+  
    <label>Edit Recipe Ingredients and Quantities: </label><br>
-   <textarea rows = "5" cols = "50" name = "ingredients"></textarea>
+   <textarea rows = "5" cols = "50" name = "ingredients"><%=@recipe.ingredients%></textarea>
   
   <br></br>
   <h3>Instructions:</h3> 
-  <p><%=@recipe.instructions%></p>
+  
   <label>Edit Instructions: </label><br>
-  <textarea rows = "5" cols = "50" name = "instructions"></textarea>
+  <textarea rows = "5" cols = "50" name = "instructions"><%=@recipe.instructions%></textarea>
   
   <br></br>
   <input type="submit" value="Edit Recipe">
