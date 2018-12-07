@@ -53,13 +53,23 @@ class RecipeController < ApplicationController
     end
   end
   
-    patch '/recipes/:id' do
+  patch '/recipes/:id' do
     @recipe = Recipe.find(params[:id])
-    @recipe.update(params)
-    if !@tweet.content.empty?
-      redirect "/tweets/#{@tweet.id}"
+    if params[:instructions] != "" || params[:ingredients] != "" || params[:name] != ""
+      if params[:name] != ""
+        @recipe.update(name: params[:name])
+      end
+      
+      if params[:ingredients] != ""
+        @recipe.update(ingredients: params[:ingredients])
+      end
+      
+       if params[:instructions] != ""
+        @recipe.update(instructions: params[:instructions])
+      end
+      redirect "/recipes/#{@recipe.id}"
     else
-      redirect "/tweets/#{@tweet.id}/edit"
+      redirect "/recipes/#{@recipe.id}/edit"
     end
   end
 end
