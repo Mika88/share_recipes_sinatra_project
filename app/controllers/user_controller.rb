@@ -6,8 +6,8 @@ class UserController < ApplicationController
 
   post '/signup' do
     @user = User.new(params)
-
-    if @user.save && @user.username != "" && @user.email != ""
+      User.all.find{|user| params[:username] == @user.username}
+    if @user.save && @user.username != "" && @user.email != "" &&  !User.all.find{|user| @user.username == user.username}
       @user.save
       session[:user_id] = @user.id
       redirect "/recipes"
