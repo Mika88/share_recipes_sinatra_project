@@ -1,5 +1,5 @@
 
-<h3>You Have <%=@user.recipes.count%> Recipes: </h3>
+<h3>You Have <%=@user.recipes.count%> Recipe(s): </h3>
 <% if @recipes %>
   <% @recipes.each_with_index do |recipe, index| %>
    <%=index + 1%>. <a href="/recipes/<%=recipe.id%>"><%=recipe.name%><br></a>
