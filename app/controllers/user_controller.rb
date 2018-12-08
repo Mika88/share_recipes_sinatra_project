@@ -41,6 +41,7 @@ class UserController < ApplicationController
 	
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
+    @recipes = @user.recipes
     if  session[:user_id] == @user.id
       erb :'/users/show'
     else
