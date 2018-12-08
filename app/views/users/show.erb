@@ -1,7 +1,9 @@
 
 <h3>You Have <%=@user.recipes.count%> Recipes: </h3>
-<%@user.recipes.each do |recipe|%>
- <%=recipe.id%>. <a href="/recipes/<%=recipe.id%>"><%=recipe.name%><br></a>
+<% if @recipes %>
+  <% @recipes.each_with_index do |recipe, index| %>
+   <%=index + 1%>. <a href="/recipes/<%=recipe.id%>"><%=recipe.name%><br></a>
+  <%end%>
 <%end%>
 
 <h3><a href="/recipes/new">Add A New Recipe<br></a></h3>

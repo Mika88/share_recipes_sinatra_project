@@ -1,7 +1,8 @@
 <h1>Recipes:</h1>
-
-<%@recipes.each do |recipe|%>
- <%=recipe.id%>. <a href="/recipes/<%=recipe.id%>"><%=recipe.name%><br></a>
- Added by: <%=recipe.user.username%>
-  <br></br>
+<%if @recipes%>
+    <%@recipes.each_with_index do |recipe, index|%>
+       <%=index + 1%>. <a href="/recipes/<%=recipe.id%>"><%=recipe.name%><br></a>
+     Added by: <%=recipe.user.username%>
+   <br></br>
+  <%end%>
 <%end%>
