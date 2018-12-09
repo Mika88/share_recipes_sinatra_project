@@ -11,12 +11,14 @@ class UserController < ApplicationController
   post '/signup' do
     @user = User.new(params)
     if User.all.find{|user| user.username == @user.username}
+      flash[:username_exists_error] = "Error: The username you entered already exists. Please enter a different username."
       redirect "/signup"
     elsif @user.save && @user.username != "" && @user.email != ""
         @user.save
         session[:user_id] = @user.id
         redirect "/recipes"
     else
+      flash[:missing_field] = "Error: One or more fields are empty, please fill all fields to sign up."
       redirect "/signup"
     end
   end

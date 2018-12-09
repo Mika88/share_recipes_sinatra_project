@@ -4,4 +4,8 @@
   Email: <input type="text" name="email">
   Password: <input type="password" name="password">
   <input type="submit" value="Sign Up">
+  <br></br>
+  
+  <h3><%=flash[:username_exists_error]%></h3>
+  <h3><%=flash[:missing_field]%></h3>
 </form>
