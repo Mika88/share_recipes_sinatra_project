@@ -1,4 +1,5 @@
-<h3><%=flash[:already_login]%></h3>
+<h3><%=flash[:already_logged_in]%></h3>
+<h3><%=flash[:already_signed_in]%></h3>
 <h1>Recipes List:</h1>
 <%if @recipes%>
     <%@recipes.each_with_index do |recipe, index|%>
