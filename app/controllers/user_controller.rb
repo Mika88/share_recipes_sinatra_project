@@ -25,6 +25,7 @@ class UserController < ApplicationController
 
   get '/login' do
     if logged_in?
+      flash[:already_login] = "Error: You are already logged in. To reach log in page please log out first."
       redirect "/recipes"
     else
       erb :'/users/login'
