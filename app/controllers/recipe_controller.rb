@@ -4,6 +4,7 @@ class RecipeController < ApplicationController
     if logged_in?
       erb :'/recipes/index'
     else
+      flash[:not_logged_in] = "Error: To get to recipes index page you must log in."
       redirect "/login"
     end
   end
