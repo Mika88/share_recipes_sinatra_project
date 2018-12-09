@@ -55,6 +55,7 @@ class UserController < ApplicationController
     if  session[:user_id] == @user.id
       erb :'/users/show'
     else
+      flash[:other_user_profile_error] = "Error: You were trying to enter someone elses profile page"
       redirect "/recipes"
     end
   end

@@ -21,6 +21,7 @@ class RecipeController < ApplicationController
     if @recipe.name != "" && @recipe.ingredients != "" && @recipe.instructions != ""
       @recipe.save
     else
+      flash[:missing_information] = "Error: One or more fields are empty. Please fill in all fields to add the recipe"
       redirect "/recipes/new"
     end
 
