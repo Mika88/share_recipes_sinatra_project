@@ -1,7 +1,11 @@
 class UserController < ApplicationController
 
   get '/signup' do
-    erb :'/users/signup'
+    if !logged_in?
+      erb :'/users/signup'
+    else
+      redirect "/recipes"
+    end
   end
 
   post '/signup' do
@@ -11,6 +15,8 @@ class UserController < ApplicationController
       @user.save
       session[:user_id] = @user.id
       redirect "/recipes"
+   
+      
     else
       redirect "/signup"
     end
