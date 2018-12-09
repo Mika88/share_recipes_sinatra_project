@@ -4,7 +4,7 @@ class RecipeController < ApplicationController
     if logged_in?
       erb :'/recipes/index'
     else
-      flash[:not_logged_in] = "Error: To get to recipes index page you must log in."
+      flash[:not_logged_in] = "Error: To get to the page you must log in."
       redirect "/login"
     end
   end
@@ -13,6 +13,7 @@ class RecipeController < ApplicationController
     if logged_in?
       erb :'/recipes/new'
     else
+      flash[:not_logged_in] = "Error: To get to the page you must log in."
       redirect "/login"
     end
   end
@@ -38,6 +39,7 @@ class RecipeController < ApplicationController
     if logged_in?
       erb :'/recipes/show'
     else
+      
       redirect "/login"
     end
   end
@@ -51,6 +53,7 @@ class RecipeController < ApplicationController
         redirect "/recipes"
       end
     else
+      flash[:not_logged_in] = "Error: To get to the page you must log in."
       redirect "/login"
     end
   end
@@ -61,6 +64,7 @@ class RecipeController < ApplicationController
       @recipe.update(name: params[:name], ingredients: params[:ingredients], instructions: params[:instructions])
       redirect "/recipes/#{@recipe.id}"
     else
+      flash[:missing_information] = "Error: One or more fields are empty. Please fill in all fields to edit the recipe"
       redirect "/recipes/#{@recipe.id}/edit"
     end
   end
