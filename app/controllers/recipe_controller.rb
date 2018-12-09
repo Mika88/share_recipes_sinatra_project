@@ -50,6 +50,7 @@ class RecipeController < ApplicationController
       if @recipe.user_id == current_user.id
          erb :'/recipes/edit'
       else
+        flash[:not_user_edit] = "Error: Unauthorized to edit other users' recipe"
         redirect "/recipes"
       end
     else
@@ -71,10 +72,18 @@ class RecipeController < ApplicationController
       
   delete '/recipes/:id/delete' do
     @recipe = Recipe.find(params[:id])
-    if logged_in? && @recipe.user_id == current_user.id
-      @recipe.destroy
-      redirect "/recipes"
+    if logged_in? 
+      
+      if @recipe.user_id == current_user.id
+        @recipe.destroy
+        redirect "/recipes"
+      else
+        flash[:not_user_delete] = "Error: Unauthorized to delete other users' recipe"
+        redirect "/recipes"
+      end
+      
     else
+      flash[:not_logged_in] = "Error: To get to the page you must log in."
       redirect "/login"
     end
   end

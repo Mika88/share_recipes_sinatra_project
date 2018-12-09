@@ -1,6 +1,9 @@
 <h3><%=flash[:already_logged_in]%></h3>
 <h3><%=flash[:already_signed_in]%></h3>
 <h3><%=flash[:other_user_profile_error]%></h3>
+<h3><%=flash[:not_user_delete]%></h3>
+<h3><%=flash[:not_user_edit]%></h3>
+
 <h1>Recipes List:</h1>
 <%if @recipes%>
     <%@recipes.each_with_index do |recipe, index|%>
