@@ -23,7 +23,7 @@ class RecipeController < ApplicationController
     if @recipe.name != "" && @recipe.ingredients != "" && @recipe.instructions != ""
       @recipe.save
     else
-      flash[:missing_information] = "Error: One or more fields are empty. Please fill in all fields to add the recipe"
+      missing_info_message
       redirect "/recipes/new"
     end
 
@@ -50,7 +50,7 @@ class RecipeController < ApplicationController
       if @recipe.user_id == current_user.id
          erb :'/recipes/edit'
       else
-        flash[:not_user_edit] = "Error: Editing another users' recipe is not allowed"
+        not_user_error_message
         redirect "/recipes"
       end
     else
@@ -65,7 +65,7 @@ class RecipeController < ApplicationController
       @recipe.update(name: params[:name], ingredients: params[:ingredients], instructions: params[:instructions])
       redirect "/recipes/#{@recipe.id}"
     else
-      flash[:missing_information] = "Error: One or more fields are empty. Please fill in all fields to edit the recipe"
+      missing_info_message
       redirect "/recipes/#{@recipe.id}/edit"
     end
   end
@@ -78,7 +78,7 @@ class RecipeController < ApplicationController
         @recipe.destroy
         redirect "/recipes"
       else
-        flash[:not_user_delete] = "Error: Deleting another users' recipe is not allowed"
+        not_user_error_message
         redirect "/recipes"
       end
       

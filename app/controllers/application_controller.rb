@@ -30,7 +30,15 @@ class ApplicationController < Sinatra::Base
     end
     
     def not_logged_in_message
-      flash[:not_logged_in] = "Error: To get to the page you must log in."
+      flash[:not_logged_in] = "Error: To get to the page you must log in"
+    end
+    
+    def not_user_error_message
+      flash[:not_user] = "Error: Only the user can make this action"
+    end
+    
+    def missing_info_message
+      flash[:missing_information] = "Error: One or more fields are empty. Please fill in all fields to complete action"
     end
   end
 end

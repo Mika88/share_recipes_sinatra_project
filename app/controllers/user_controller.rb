@@ -19,7 +19,7 @@ class UserController < ApplicationController
       session[:user_id] = @user.id
       redirect "/recipes"
     else
-      flash[:missing_field] = "Error: One or more fields are empty, please fill all fields to sign up."
+      missing_info_message
       redirect "/signup"
     end
   end
@@ -55,7 +55,7 @@ class UserController < ApplicationController
     if  session[:user_id] == @user.id
       erb :'/users/show'
     else
-      flash[:other_user_profile_error] = "Error: You were trying to enter someone elses profile page"
+      not_user_error_message
       redirect "/recipes"
     end
   end
