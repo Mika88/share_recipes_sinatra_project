@@ -13,7 +13,7 @@ class RecipeController < ApplicationController
     if logged_in?
       erb :'/recipes/new'
     else
-      flash[:not_logged_in] = "Error: To get to the page you must log in."
+      flash[:not_logged_in] = "Error: To get to the page you must log in"
       redirect "/login"
     end
   end
@@ -50,7 +50,7 @@ class RecipeController < ApplicationController
       if @recipe.user_id == current_user.id
          erb :'/recipes/edit'
       else
-        flash[:not_user_edit] = "Error: Unauthorized to edit other users' recipe"
+        flash[:not_user_edit] = "Error: Editing another users' recipe is not allowed"
         redirect "/recipes"
       end
     else
@@ -78,12 +78,12 @@ class RecipeController < ApplicationController
         @recipe.destroy
         redirect "/recipes"
       else
-        flash[:not_user_delete] = "Error: Unauthorized to delete other users' recipe"
+        flash[:not_user_delete] = "Error: Deleting another users' recipe is not allowed"
         redirect "/recipes"
       end
       
     else
-      flash[:not_logged_in] = "Error: To get to the page you must log in."
+      flash[:not_logged_in] = "Error: To get to the page you must log in"
       redirect "/login"
     end
   end
