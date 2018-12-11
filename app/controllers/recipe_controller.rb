@@ -4,7 +4,7 @@ class RecipeController < ApplicationController
     if logged_in?
       erb :'/recipes/index'
     else
-      flash[:not_logged_in] = "Error: To get to the page you must log in."
+      not_logged_in_message
       redirect "/login"
     end
   end
@@ -13,7 +13,7 @@ class RecipeController < ApplicationController
     if logged_in?
       erb :'/recipes/new'
     else
-      flash[:not_logged_in] = "Error: To get to the page you must log in"
+      not_logged_in_message
       redirect "/login"
     end
   end
@@ -54,7 +54,7 @@ class RecipeController < ApplicationController
         redirect "/recipes"
       end
     else
-      flash[:not_logged_in] = "Error: To get to the page you must log in."
+      not_logged_in_message
       redirect "/login"
     end
   end
@@ -83,7 +83,7 @@ class RecipeController < ApplicationController
       end
       
     else
-      flash[:not_logged_in] = "Error: To get to the page you must log in"
+      not_logged_in_message
       redirect "/login"
     end
   end

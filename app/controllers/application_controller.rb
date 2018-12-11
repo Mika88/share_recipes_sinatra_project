@@ -28,5 +28,9 @@ class ApplicationController < Sinatra::Base
     def already_logged_in_message
       flash[:already_logged_in] = "Error: You are already logged in. To reach the page please log out first." 
     end
+    
+    def not_logged_in_message
+      flash[:not_logged_in] = "Error: To get to the page you must log in."
+    end
   end
 end
