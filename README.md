@@ -12,7 +12,7 @@ Copy and paste the server given into your browser, and start sharing your recipe
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/'Mika88'/share_recipes_sinatra_project.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Mika88/share_recipes_sinatra_project.
 
 ## License
 
