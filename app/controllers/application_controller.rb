@@ -24,5 +24,9 @@ class ApplicationController < Sinatra::Base
     def current_user
       User.find(session[:user_id])
     end
+    
+    def already_logged_in_message
+      flash[:already_logged_in] = "Error: You are already logged in. To reach the page please log out first." 
+    end
   end
 end

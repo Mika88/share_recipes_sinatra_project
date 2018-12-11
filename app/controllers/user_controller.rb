@@ -4,7 +4,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/users/signup'
     else
-      flash[:already_signed_in] = "Error: You are already signed and logged in. To reach sign up page please log out first and then go to sign up page."
+      already_logged_in_message
       redirect "/recipes"
     end
   end
@@ -26,7 +26,7 @@ class UserController < ApplicationController
 
   get '/login' do
     if logged_in?
-      flash[:already_logged_in] = "Error: You are already logged in. To reach log in page please log out first."
+     already_logged_in_message
       redirect "/recipes"
     else
       erb :'/users/login'
