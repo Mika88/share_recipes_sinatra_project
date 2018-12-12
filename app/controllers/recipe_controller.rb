@@ -21,17 +21,13 @@ class RecipeController < ApplicationController
   post '/recipes' do
     @recipe = Recipe.new(params)
     if @recipe.name != "" && @recipe.ingredients != "" && @recipe.instructions != ""
+      @recipe.user_id = current_user.id
       @recipe.save
+      redirect "/recipes"
     else
       missing_info_message
       redirect "/recipes/new"
     end
-
-    if logged_in?
-      @recipe.user_id = current_user.id
-      @recipe.save
-    end
-    redirect "/recipes"
   end
   
     get '/recipes/:id' do
@@ -39,7 +35,7 @@ class RecipeController < ApplicationController
     if logged_in?
       erb :'/recipes/show'
     else
-      
+      not_logged_in_message
       redirect "/login"
     end
   end
