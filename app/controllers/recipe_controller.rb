@@ -57,12 +57,17 @@ class RecipeController < ApplicationController
   
   patch '/recipes/:id' do
     @recipe = Recipe.find(params[:id])
-    if params[:instructions] != "" && params[:ingredients] != "" && params[:name] != ""
-      @recipe.update(name: params[:name], ingredients: params[:ingredients], instructions: params[:instructions])
-      redirect "/recipes/#{@recipe.id}"
+    if @recipe.user_id == current_user.id
+      if params[:instructions] != "" && params[:ingredients] != "" && params[:name] != ""
+        @recipe.update(name: params[:name], ingredients: params[:ingredients], instructions: params[:instructions])
+        redirect "/recipes/#{@recipe.id}"
+      else
+        missing_info_message
+        redirect "/recipes/#{@recipe.id}/edit"
+      end
     else
-      missing_info_message
-      redirect "/recipes/#{@recipe.id}/edit"
+      not_user_error_message
+      redirect '/recipes'
     end
   end
       
