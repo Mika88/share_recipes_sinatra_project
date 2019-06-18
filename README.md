@@ -2,7 +2,7 @@
 
 Welcome to the Share-Recipes-Sinatra-Project! 
 This Sinatra app allows users to sign up or log in to the app. 
-Once logged in, users can cerate, edit and share recipes with the other users in the app.
+Once logged in, users can create, edit and share recipes with the other users in the app.
 
 
 ## Usage
