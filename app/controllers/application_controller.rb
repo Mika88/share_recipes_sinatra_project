@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
     end
     
     def not_user_error_message
-      flash[:not_user] = "Error: Only the user allowed to complete this action"
+      flash[:not_user] = "Error: Only the user is allowed to complete this action"
     end
     
     def missing_info_message
